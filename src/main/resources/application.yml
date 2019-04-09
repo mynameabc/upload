@@ -2,7 +2,7 @@ server:
   tomcat:
     uri-encoding: UTF-8
   servlet:
-    context-path: /IUploadConfig
+    context-path: /upload
   port: 8087
 spring:
   profiles:
