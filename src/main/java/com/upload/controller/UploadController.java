@@ -3,16 +3,14 @@ package com.upload.controller;
 import com.upload.IUploadConfig;
 import com.upload.UploadFactory;
 import communal.Result;
-import com.upload.copy.ICopy;
 import communal.util.UUIDGeneratorUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.core.MediaType;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -23,20 +21,7 @@ import java.util.Date;
 @RestController
 public class UploadController {
 
-    @Autowired
-    private ICopy copyImpl;
-
-    @ApiOperation(value="测试", notes="")
-    @GetMapping(value="test", produces=MediaType.APPLICATION_JSON)
-    public void test(HttpServletRequest request) {
-        System.out.println("你好!");
-    }
-
-    @ApiOperation(value="文件复制", notes="")
-    @GetMapping(value="copyFile", produces=MediaType.APPLICATION_JSON)
-    public Result copyFile(@RequestParam("srcFile") String srcFile, @RequestParam("destination") String destination) {
-        return copyImpl.copy(srcFile, destination);
-    }
+    final static Logger logger = LogManager.getLogger(UploadController.class);
 
     /**
      *
@@ -78,7 +63,7 @@ public class UploadController {
         }
 
         String fileName = file.getOriginalFilename();                               //文件名
-        String suffixName = fileName.substring(fileName.lastIndexOf("."));      // 后缀名
+        String suffixName = fileName.substring(fileName.lastIndexOf("."));      //后缀名
 
         String saveFolder = uploadConfig.getSaveFolder();
         fileName = new Date().getTime() + "_" + UUIDGeneratorUtil.getUUID() + "_" + suffixName;
