@@ -12,12 +12,12 @@ public class UploadContact {
     /**
      * 上传目录
      */
-    public static final String UNIVERSAL_DIR = "/web/images/";
+    public static final String UNIVERSAL_DIR = "E:/";
 
     /**
-     * 文件域名
+     * 访问路径
      */
-    public static final String UNIVERSAL_FILE_DOMAIN_NAME = "http://image.gumi.com/";
+    public static final String AccessoryPath = "http://192.168.1.101:8088/images/";
 
     /**
      * 上传表单文件限定大小:1M
@@ -28,6 +28,11 @@ public class UploadContact {
      * 保存在临时目录的时间:7天
      */
     public static final long UNIVERSAL_OVERDUE_WAIT_TIME = 604800L;
+
+    /**
+     * 文件连接符
+     */
+    public static final String CONNECTOR = "-";
 
     /****************************通用上传参数********************************/
 

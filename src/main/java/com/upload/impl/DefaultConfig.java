@@ -18,12 +18,7 @@ public class DefaultConfig implements IUploadConfig {
 
         Result result = new Result(true, "");
 
-        //判断扩展名
-        {
-
-        }
-
-        //判断文件大小
+        //判断单个文件大小
         {
             Long size = this.getSingleFileSize();
             if (fileSize > size) {
@@ -31,7 +26,7 @@ public class DefaultConfig implements IUploadConfig {
             }
         }
 
-        //如果文件夹不存在就新建
+        //如果文件夹不存在就创建
         {
             String path = this.getSaveFolder();
             for (int index = 1; index <= path.length(); index++) {
@@ -48,7 +43,7 @@ public class DefaultConfig implements IUploadConfig {
     }
 
     public String getAccessoryPath() {
-        return "http://192.168.1.101:8088/images/";
+        return UploadContact.AccessoryPath;
     }
 
     public String getSaveFolder() {
