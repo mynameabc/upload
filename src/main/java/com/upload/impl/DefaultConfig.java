@@ -19,7 +19,7 @@ public class DefaultConfig implements IUploadConfig {
 
         //判断单个文件大小
         {
-            Long size = this.getSingleFileSize();
+            long size = this.getSingleFileSize();
             if (fileSize > size) {
                 return Response.getFAIL("该文件大小超出上限!");
             }

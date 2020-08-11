@@ -35,7 +35,7 @@ public class UploadController {
      */
     @ApiOperation(value="文件上传", notes="")
     @PostMapping(value="fileUpload")
-    public Response fileUpload(@RequestParam(value="file")MultipartFile file, @RequestParam(value="type")String type) {
+    public Response fileUpload(@RequestParam(value="file")MultipartFile file, @RequestParam(value="json")String json) {
 
         Response response = defaultUpload.check(file.getSize(), file.getOriginalFilename());
 
