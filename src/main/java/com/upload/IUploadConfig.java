@@ -1,6 +1,6 @@
 package com.upload;
 
-import communal.Result;
+import com.project.Response;
 
 public interface IUploadConfig {
 
@@ -10,7 +10,7 @@ public interface IUploadConfig {
      * @param getOriginalFilename
      * @return
      */
-    Result check(long fileSize, String getOriginalFilename);
+    Response check(long fileSize, String getOriginalFilename);
 
     /**
      * 返回访问路径

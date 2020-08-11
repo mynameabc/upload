@@ -1,28 +1,27 @@
 package com.upload.impl;
 
+import com.project.Response;
 import com.upload.IUploadConfig;
 import com.upload.UploadContact;
 import communal.Result;
-import communal.TokenProccessor;
-import communal.util.DateUtil;
 import communal.util.UUIDGeneratorUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.util.Date;
 
+@Slf4j
 @Service("defaultUpload")
 public class DefaultConfig implements IUploadConfig {
 
-    public Result check(long fileSize, String getOriginalFilename) {
-
-        Result result = new Result(true, "");
+    public Response check(long fileSize, String getOriginalFilename) {
 
         //判断单个文件大小
         {
             Long size = this.getSingleFileSize();
             if (fileSize > size) {
-                return new Result(false, "该文件大小超出上限!");
+                return Response.getFAIL("该文件大小超出上限!");
             }
         }
 
@@ -38,8 +37,7 @@ public class DefaultConfig implements IUploadConfig {
                 }
             }
         }
-
-        return result;
+        return Response.getSUCCESS();
     }
 
     public String getAccessoryPath() {

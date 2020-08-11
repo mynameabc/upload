@@ -1,6 +1,6 @@
 package com.upload.copy;
 
-import communal.Result;
+import com.project.Response;
 
 public interface ICopy {
 
@@ -10,5 +10,5 @@ public interface ICopy {
      * @param destination
      * @return
      */
-    Result copy(String srcFile, String destination);
+    Response copy(String srcFile, String destination);
 }

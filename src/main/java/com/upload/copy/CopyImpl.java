@@ -1,8 +1,9 @@
 package com.upload.copy;
 
-import communal.Result;
+import com.project.Response;
+import com.project.ResponseCode;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -10,32 +11,33 @@ import java.io.FileOutputStream;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 
+@Slf4j
 @Component
 public class CopyImpl implements ICopy {
 
-    public Result copy(String srcFile, String destination) {
+    public Response copy(String srcFile, String destination) {
 
         File file = new File(srcFile);
         if (!file.exists() || !file.isFile()) {
-            return new  Result(false, "srcFile不是一个有效的文件");
+            return Response.getFAIL(ResponseCode.srcFileException);
         }
 
         File file2 = new File(destination);
         if (!file.exists() || !file.isDirectory()) {
-            return new  Result(false, "destination不是一个有效目录");
+            return Response.getFAIL(ResponseCode.destinationException);
         }
 
         try {
             this.nioMappedCopy(file, file2);
         } catch (Exception e) {
             e.printStackTrace();
-            return new Result(true, "复制失败!");
+            return Response.getFAIL(ResponseCode.CopyFail);
         }
 
-        return new Result(true, "复制成功!");
+        return Response.getSUCCESS(ResponseCode.CopySuccess);
     }
 
-    private static void nioMappedCopy(File Copyfile, File newfile) throws Exception {
+    private static void nioMappedCopy(File copyFile, File newFile) throws Exception {
 
         FileInputStream fis = null;
         FileOutputStream fos = null;
@@ -43,11 +45,10 @@ public class CopyImpl implements ICopy {
         FileChannel outFoC = null;
         int length = 2097152;
         try {
-            fis = new FileInputStream(Copyfile);
-            fos = new FileOutputStream(newfile);
+            fis = new FileInputStream(copyFile);
+            fos = new FileOutputStream(newFile);
             inFiC = fis.getChannel();
             outFoC = fos.getChannel();
-            long startTime = System.currentTimeMillis();
             while (inFiC.position() != inFiC.size()) {
                 if ((inFiC.size() - inFiC.position()) < length) {
                     length = (int) (inFiC.size() - inFiC.position());
@@ -56,24 +57,13 @@ public class CopyImpl implements ICopy {
                 outFoC.write(inbuffer);
                 inFiC.position(inFiC.position() + length);
             }
-            long EndTime = System.currentTimeMillis();
-            System.out.print("nioMappedCopy用了毫秒数：");
-            System.out.println(EndTime - startTime);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if (outFoC != null) {
-                outFoC.close();
-            }
-            if (inFiC != null) {
-                inFiC.close();
-            }
-            if (fos != null) {
-                fos.close();
-            }
-            if (fis != null) {
-                fis.close();
-            }
+            if (outFoC != null) { outFoC.close(); }
+            if (inFiC != null) { inFiC.close(); }
+            if (fos != null) { fos.close(); }
+            if (fis != null) { fis.close(); }
         }
     }
 }

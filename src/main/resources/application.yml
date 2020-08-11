@@ -1,6 +1,9 @@
 server:
-  tomcat:
-    uri-encoding: UTF-8
+  undertow:
+    io-threads: 4
+    worker-threads: 128
+    buffer-size: 1024
+    direct-buffers: true
   servlet:
     context-path: /upload
   port: 8087
@@ -13,3 +16,5 @@ spring:
       charset: UTF-8
       enabled: true
 
+#Ip白名单
+whiteList: @white.list@
