@@ -2,6 +2,7 @@ package com.upload;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.FileRenamePolicy;
+import com.project.Response;
 import communal.Result;
 import org.springframework.stereotype.Component;
 
@@ -29,7 +30,7 @@ public class UploadUtil {
         this.mtftp = new MimetypesFileTypeMap();
     }
 
-    public Result uploadFile(HttpServletRequest request, String saveDir, int maxPostSize, String encoding) {
+    public Response uploadFile(HttpServletRequest request, String saveDir, int maxPostSize, String encoding) {
 
         String name = request.getParameter("aaa");
         File fileDirectory = new File(saveDir);
@@ -60,23 +61,10 @@ public class UploadUtil {
             }
         }
 
-        Result result = null;
+        Response response = null;
 
         //检查上传文件的扩展名
-        {
-            result = this.checkFileExtension(multi, saveDir);
-            if (!result.isSuccess()) {
-
-                return result;
-            } else {
-
-/*                if (null != this.afterSuccess) {        //上传成功后调用
-                    this.afterSuccess.afterSuccess(multi, saveDir);
-                }*/
-
-                return result;
-            }
-        }
+        return this.checkFileExtension(multi, saveDir);
     }
 
     /**
@@ -85,7 +73,7 @@ public class UploadUtil {
      * @param saveDir
      * @return
      */
-    private Result checkFileExtension(MultipartRequest multi, String saveDir) {
+    private Response checkFileExtension(MultipartRequest multi, String saveDir) {
 
         Enumeration fileNames = multi.getFileNames();
         while (fileNames.hasMoreElements()) {
@@ -109,7 +97,7 @@ public class UploadUtil {
             }
         }
 
-        return new Result(true, "检查成功!");
+        return Response.getSUCCESS("检查成功!");
     }
 
     /**
