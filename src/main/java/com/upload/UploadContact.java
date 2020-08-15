@@ -10,12 +10,12 @@ public class UploadContact {
     public static final String UNIVERSAL_ENCODING = "UTF-8";
 
     /**
-     * 上传目录
+     * 上传目录 Windows:E:\\  |  Linux:/usr/local/ 最后的杠一定要加
      */
-    public static final String UNIVERSAL_DIR = "E:/";
+    public static final String UNIVERSAL_DIR = "E:\\";
 
     /**
-     * 访问路径
+     * 访问路径 最后的杠一定要加
      */
     public static final String AccessoryPath = "http://192.168.1.101:8088/images/";
 

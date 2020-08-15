@@ -5,7 +5,7 @@ import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 
 /**
- * 定时删除过期文件
+ * 定时删除过期文件夹
  */
 public class OverdueHandlerJob implements Job {
 

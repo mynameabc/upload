@@ -17,4 +17,4 @@ spring:
       enabled: true
 
 #Ip白名单
-whiteList: @white.list@
+#whiteList: @white.list@
