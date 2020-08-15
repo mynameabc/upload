@@ -12,12 +12,19 @@ public class UploadContact {
     /**
      * 上传目录 Windows:E:\\  |  Linux:/usr/local/ 最后的杠一定要加
      */
-    public static final String UNIVERSAL_DIR = "E:\\";
-
+    public static final String UNIVERSAL_DIR = "E:\\images\\";
+/*
+    location /images/{
+        alias E:\\images\\;
+        autoindex_exact_size off;   #默认为on, 显示出文件的确切大小, 单位是bytes
+        autoindex_localtime on;     #改为off后，显示出文件的大概大小，单位是kB或者MB或者GB
+        charset utf-8;
+    }
+*/
     /**
      * 访问路径 最后的杠一定要加
      */
-    public static final String AccessoryPath = "http://192.168.1.101:8088/images/";
+    public static final String AccessoryPath = "http://localhost:8088/images/";
 
     /**
      * 上传表单文件限定大小:1M
