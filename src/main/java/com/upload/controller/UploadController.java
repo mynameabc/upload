@@ -32,12 +32,12 @@ public class UploadController {
     /**
      * 单个文件上传
      * @param file
-     * @param jsonPar
+     * @param jsonParameter
      * @return
      */
     @ApiOperation(value="单个文件上传", notes="")
     @PostMapping(value="singleFileUpload")
-    public Response singleFileUpload(@RequestParam(value="file")MultipartFile file, @RequestParam(value="jsonPar")String jsonPar) {
+    public Response singleFileUpload(@RequestParam(value="file")MultipartFile file, @RequestParam(value="jsonParameter")String jsonParameter) {
 
 //        Response response = defaultUpload.check(file.getSize(), file.getOriginalFilename());
 
@@ -84,12 +84,12 @@ public class UploadController {
     /**
      * 批量文件上传
      * @param file
-     * @param jsonPar
+     * @param jsonParameter
      * @return
      */
     @ApiOperation(value="批量文件上传", notes="")
     @PostMapping(value="batchFileUpload")
-    public Response batchFileUpload(@RequestParam(value="file")MultipartFile file, @RequestParam(value="jsonPar")String jsonPar) {
+    public Response batchFileUpload(@RequestParam(value="file")MultipartFile file, @RequestParam(value="jsonParameter")String jsonParameter) {
         return Response.getSUCCESS("upload success!", "");
     }
 }
