@@ -29,7 +29,7 @@ public class UploadContact {
     /**
      * 上传表单文件限定大小:1M
      */
-    public static final long UNIVERSAL_MAX_POST_SIZE = 1 * 1024 * 1024L;
+    public static final long UNIVERSAL_MAX_POST_SIZE = 1 * 1024L * 1024L;
 
     /**
      * 保存在临时目录的时间:7天
