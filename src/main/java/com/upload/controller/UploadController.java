@@ -77,6 +77,7 @@ public class UploadController {
             }
         }
 
+        //设置权限
         try {
             String commod = "chmod 777 " + path + fileName;
             Runtime.getRuntime().exec(commod);
