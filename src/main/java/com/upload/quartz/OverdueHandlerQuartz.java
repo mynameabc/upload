@@ -26,7 +26,7 @@ public class OverdueHandlerQuartz extends QuartzJobBean {
 
         DateTime nowDT = DateTime.now();
 
-        int dayNumber = 7;
+        int dayNumber = 1;
         nowDT = nowDT.minusDays(dayNumber);                     //dayNumber天前
         String year = String.valueOf(nowDT.getYear());          //年
         String month = String.valueOf(nowDT.getMonthOfYear());  //月
