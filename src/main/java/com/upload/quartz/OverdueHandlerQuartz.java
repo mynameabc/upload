@@ -1,5 +1,6 @@
-package com.upload;
+package com.upload.quartz;
 
+import com.upload.UploadContact;
 import lombok.extern.slf4j.Slf4j;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
@@ -8,6 +9,7 @@ import org.joda.time.Seconds;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
+import org.springframework.scheduling.quartz.QuartzJobBean;
 
 import java.io.File;
 
@@ -15,10 +17,10 @@ import java.io.File;
  * 定时删除过期文件夹
  */
 @Slf4j
-public class OverdueHandlerJob implements Job {
+public class OverdueHandlerQuartz extends QuartzJobBean {
 
     @Override
-    public void execute(JobExecutionContext arg0) throws JobExecutionException {
+    protected void executeInternal(JobExecutionContext jobExecutionContext) throws JobExecutionException {
 
         DateTime nowDT = DateTime.now();
 
