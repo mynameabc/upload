@@ -79,7 +79,6 @@ public class UploadController {
 
         try {
             String commod = "chmod 777 " + path + fileName;
-            log.info("执行命令:{}", commod);
             Runtime.getRuntime().exec(commod);
         } catch (Exception e) {
             log.error("权限设置失败:{}", e.getCause().getMessage());
