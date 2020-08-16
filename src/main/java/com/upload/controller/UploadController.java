@@ -103,9 +103,8 @@ public class UploadController {
         return Response.getSUCCESS("upload success!", "");
     }
 
-    @GetMapping(value = "bbb")
+    @GetMapping(value = "test")
     public String test() {
-        log.info("当前用户id:");
         return "你好!";
     }
 }
