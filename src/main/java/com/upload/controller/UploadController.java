@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 @Slf4j
@@ -72,8 +73,17 @@ public class UploadController {
                 file.transferTo(destFile);
             } catch (IOException e) {
                 log.error("上传失败:{}", e.getCause().getMessage());
-                return Response.getFAIL("IOException!");
+                return Response.getFAIL("上传失败!");
             }
+        }
+
+        try {
+            String commod = "chmod 777 " + path + fileName;
+            log.info("执行命令:{}", commod);
+            Runtime.getRuntime().exec(commod);
+        } catch (Exception e) {
+            log.error("权限设置失败:{}", e.getCause().getMessage());
+            return Response.getFAIL("权限设置失败!");
         }
 
         //http访问路径
@@ -91,5 +101,11 @@ public class UploadController {
     @PostMapping(value="batchFileUpload")
     public Response batchFileUpload(@RequestParam(value="file")MultipartFile file, @RequestParam(value="jsonParameter")String jsonParameter) {
         return Response.getSUCCESS("upload success!", "");
+    }
+
+    @GetMapping(value = "bbb")
+    public String test() {
+        log.info("当前用户id:");
+        return "你好!";
     }
 }

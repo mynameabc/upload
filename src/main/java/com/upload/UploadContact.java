@@ -12,7 +12,8 @@ public class UploadContact {
     /**
      * 上传目录 Windows:E:\\  |  Linux:/usr/local/ 最后的杠一定要加
      */
-    public static final String UNIVERSAL_DIR = "E:\\images\\";
+    public static final String UNIVERSAL_DIR = "/web/images/";
+//    public static final String UNIVERSAL_DIR = "E:\\images\\";
 /*
     location /images/{
         alias E:\\images\\;
@@ -24,7 +25,7 @@ public class UploadContact {
     /**
      * 访问路径 最后的杠一定要加
      */
-    public static final String AccessoryPath = "http://localhost:8088/images/";
+    public static final String AccessoryPath = "http://192.168.2.100:80/images/";
 
     /**
      * 上传表单文件限定大小:1M
