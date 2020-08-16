@@ -103,6 +103,19 @@ public class UploadController {
         return Response.getSUCCESS("upload success!", "");
     }
 
+    /**
+     * 通知
+     * @param fileFormToken
+     * @return
+     */
+    @ApiOperation(value="通知", notes="")
+    @PostMapping(value="notify")
+    public Response notify(@RequestParam(value="fileFormToken")String fileFormToken) {
+
+        //从大通铺复制文件到最终地
+        return Response.getSUCCESS("upload success!", "");
+    }
+
     @GetMapping(value = "test")
     public String test() {
         return "你好!";
