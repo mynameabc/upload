@@ -22,6 +22,8 @@ public class OverdueHandlerQuartz extends QuartzJobBean {
     @Override
     protected void executeInternal(JobExecutionContext jobExecutionContext) throws JobExecutionException {
 
+        log.info("定时删除七天前目录开始执行!");
+
         DateTime nowDT = DateTime.now();
 
         int dayNumber = 7;
