@@ -49,19 +49,6 @@ public class CatalogueHandler {
         return pathMap;
     }
 
-    public static boolean delete(String path) {
-        File _path = new File(path);
-        if (_path.exists()) {
-            return _path.delete();
-        }
-        return false;
-    }
-
-    public static boolean exists(String path) {
-        File _path = new File(path);
-        return _path.exists();
-    }
-
     public static void main(String args[]) {
 
         System.out.println(CatalogueHandler.create());
