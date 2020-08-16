@@ -3,12 +3,10 @@ package com.upload.impl;
 import com.project.Response;
 import com.upload.IUploadConfig;
 import com.upload.UploadContact;
-import communal.Result;
 import communal.util.UUIDGeneratorUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
 import java.util.Date;
 
 @Slf4j
