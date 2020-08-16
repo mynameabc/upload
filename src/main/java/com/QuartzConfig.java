@@ -13,7 +13,7 @@ public class QuartzConfig {
     }
 
     @Bean
-    public Trigger testQuartzTrigger() {
+    public Trigger overdueHandlerQuartzTrigger() {
         //cron方式： 每天 23点45分 执行一次
         return TriggerBuilder.newTrigger().forJob(overdueHandlerQuartz())
                 .withIdentity("overdueHandlerQuartz")
