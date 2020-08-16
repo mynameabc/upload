@@ -16,6 +16,13 @@ public class UploadContact {
 //    public static final String UNIVERSAL_DIR = "E:\\images\\";
 /*
     location /images/{
+        alias /web/images/;
+        autoindex_exact_size off;   #默认为on, 显示出文件的确切大小, 单位是bytes
+        autoindex_localtime on;     #改为off后，显示出文件的大概大小，单位是kB或者MB或者GB
+        charset utf-8;
+    }
+
+    location /images/{
         alias E:\\images\\;
         autoindex_exact_size off;   #默认为on, 显示出文件的确切大小, 单位是bytes
         autoindex_localtime on;     #改为off后，显示出文件的大概大小，单位是kB或者MB或者GB
