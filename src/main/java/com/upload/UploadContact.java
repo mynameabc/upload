@@ -32,7 +32,7 @@ public class UploadContact {
     /**
      * 访问路径 最后的杠一定要加
      */
-    public static final String AccessoryPath = "http://192.168.2.100:80/images/";
+    public static final String AccessoryPath = "http://192.168.2.100/images/";
 
     /**
      * 上传表单文件限定大小:1M
